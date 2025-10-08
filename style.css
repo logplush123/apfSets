@@ -1,0 +1,313 @@
+/* General Reset and Base Styles */
+body {
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif; /* Changed font for a modern feel */
+    font-weight: 400;
+    background-color: #f0f4f8; /* Light blue/grey background for the "app" */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Start elements from the top */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+/* Custom Box - Main Container Styling */
+.custom-box {
+    max-width: 450px; /* Reduced max-width for a more mobile-app feel */
+    width: 100%;
+    background-color: #ffffff; /* Clean white background */
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 12px; /* Smoother, more modern corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    animation: fadeInRight 0.8s ease;
+}
+
+@keyframes fadeInRight {
+    0% {
+        transform: translateY(20px); /* Changed to translateY for a subtle drop-in effect */
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.custom-box::before,
+.custom-box::after {
+    content: '';
+    clear: both;
+    display: table;
+}
+
+.custom-box.hide {
+    display: none;
+}
+
+/* Buttons Styling */
+.btn {
+    padding: 12px 30px; /* Slightly smaller padding */
+    background: linear-gradient(45deg, #007bff, #0056b3); /* Blue gradient for primary action */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Button shadow */
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #0056b3, #007bff);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Home Box Styling */
+.home-box h3 {
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.home-box p {
+    font-size: 15px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    color: #555;
+}
+
+.home-box p span {
+    font-weight: 700;
+    color: #007bff;
+}
+
+/* Quiz Box Styling */
+.quiz-box .question-number,
+.quiz-box .question-text,
+.quiz-box .option-container,
+.quiz-box .next-question-btn,
+.quiz-box .answer-indicator {
+    width: 100%;
+    float: left;
+}
+
+.quiz-box .question-number {
+    font-size: 16px;
+    color: #007bff;
+    font-weight: 500;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.quiz-box .question-text {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    font-weight: 600;
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+/* Options Styling */
+.quiz-box .option-container .option {
+    background-color: #f8f9fa; /* Lighter option background */
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #333;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 0.4s ease forwards;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent; /* Subtle border for better definition */
+    transition: all 0.3s ease;
+}
+
+.quiz-box .option-container .option:hover {
+    background-color: #e9ecef;
+}
+
+.quiz-box .option-container .option.already-answered {
+    pointer-events: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Correct/Wrong Feedback */
+.quiz-box .option-container .option.correct {
+    color: #ffffff;
+    border-color: #28a745;
+}
+
+.quiz-box .option-container .option.correct::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #28a745; /* Green for correct */
+    z-index: -1;
+    animation: slideInLeft .4s ease forwards;
+}
+
+.quiz-box .option-container .option.wrong {
+    color: #ffffff;
+    border-color: #dc3545;
+}
+
+.quiz-box .option-container .option.wrong::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #dc3545; /* Red for wrong */
+    z-index: -1;
+    animation: slideInLeft .4s ease forwards;
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.quiz-box .next-question-btn {
+    text-align: right; /* Align next button to the right */
+}
+
+/* Answer Indicator Styling */
+.quiz-box .answer-indicator {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.quiz-box .answer-indicator div {
+    height: 30px; /* Slightly smaller dots */
+    width: 30px;
+    display: inline-flex; /* Use flex for easy center alignment of icons */
+    justify-content: center;
+    align-items: center;
+    background-color: #e9ecef;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-top: 5px;
+    border: 1px solid #ced4da;
+}
+
+.quiz-box .answer-indicator div.correct {
+    background-image: url("img/right.png"); /* Assuming this is a white/transparent checkmark */
+    background-color: #28a745;
+    background-size: 60%;
+    border-color: #28a745;
+}
+
+.quiz-box .answer-indicator div.wrong {
+    background-image: url("img/wrong.png"); /* Assuming this is a white/transparent X */
+    background-color: #dc3545;
+    background-size: 60%;
+    border-color: #dc3545;
+}
+
+/* Result Box Styling */
+.result-box {
+    text-align: center;
+}
+
+.result-box h1 {
+    font-size: 28px;
+    line-height: 1.2;
+    color: #007bff;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.result-box table {
+    width: 100%;
+    border-collapse: separate; /* Use separate for rounded corners on table */
+    border-spacing: 0;
+    margin: 30px 0;
+    border-radius: 8px;
+    overflow: hidden; /* Ensures borders/colors are contained */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.result-box table tr:nth-child(odd) {
+    background-color: #f1f6fa; /* Subtle zebra striping */
+}
+.result-box table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.result-box table td {
+    border: none;
+    padding: 12px 15px;
+    font-weight: 500;
+    color: #333;
+    width: 50%;
+    text-align: left;
+    font-size: 16px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.result-box table tr:last-child td {
+    border-bottom: none; /* Remove bottom border for the last row */
+}
+
+.result-box .btn {
+    margin: 0 10px;
+    margin-top: 20px;
+}
+
+/* Media Queries for Responsiveness */
+@media(max-width: 500px) {
+    .custom-box {
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .result-box .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .quiz-box .question-text {
+        font-size: 16px;
+    }
+    .quiz-box .option-container .option {
+        font-size: 15px;
+    }
+}
